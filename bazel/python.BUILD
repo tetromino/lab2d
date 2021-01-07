@@ -25,15 +25,15 @@ cc_library(
     name = "python_headers_macos",
     hdrs = select(
         {
-            "@bazel_tools//tools/python:PY2": glob(["Library/Frameworks/Python.framework/Versions/2.7/Headers/*.h"]),
-            "@bazel_tools//tools/python:PY3": glob(["Library/Frameworks/Python.framework/Versions/3.9/Headers/**/*.h"]),
+            "@bazel_tools//tools/python:PY2": glob(["Library/Frameworks/Python.framework/Versions/2.7/Headers/**/*.h"]),
+            "@bazel_tools//tools/python:PY3": glob(["usr/local/Frameworks/Python.framework/Versions/3.9/Headers/**/*.h"]),
         },
         no_match_error = "Internal error, Python version should be one of PY2 or PY3",
     ),
     includes = select(
         {
             "@bazel_tools//tools/python:PY2": ["Library/Frameworks/Python.framework/Versions/2.7/Headers"],
-            "@bazel_tools//tools/python:PY3": ["Library/Frameworks/Python.framework/Versions/3.9/Headers"],
+            "@bazel_tools//tools/python:PY3": ["usr/local/Frameworks/Python.framework/Versions/3.9/Headers"],
         },
         no_match_error = "Internal error, Python version should be one of PY2 or PY3",
     ),
